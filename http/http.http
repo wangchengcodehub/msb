@@ -1,0 +1,17 @@
+POST http://localhost:2379/api/microservices/v1/services
+Content-Type: application/json
+
+{
+    "serviceName": "mbr-internal",
+    "version": "v1",
+    "url": "/mbr/v1",
+    "publish_port": "1234",
+    "protocol": "HTTP",
+    "visualRange": "0",
+    "nodes": [{
+            "ip": "172.16.200.42",
+            "port": 22
+        }]
+}
+
+###
