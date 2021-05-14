@@ -1,0 +1,23 @@
+server {
+    listen       {{listen}};
+    server_name  localhost;
+
+    #access_log  /var/log/nginx/host.access.log  main;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    {% for service_obj in service_objs %}
+    location /{{service_obj.service_name}} {
+        proxy_pass http://{{service_obj.proxy_pass_host}}:{{service_obj.proxy_pass_port}}{{service_obj.proxy_pass_url}};
+    }
+    {% endfor %}
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+}

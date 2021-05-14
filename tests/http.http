@@ -1,0 +1,13 @@
+POST http://{{host}}:{{port}}/api/microservices/v1/services
+Content-Type: application/json
+
+{
+    "serviceName": "mbr02",
+    "version": "v1",
+    "url": "/mbr/v1",
+    "protocol": "HTTP",
+    "nodes": [{"ip":"127.0.9.9", "port": "8099"}],
+    "visualRange": "1"
+}
+
+###

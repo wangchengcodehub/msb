@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  ndr:
+    image: msb_etcd:v1.0
+    container_name: msb-etcd
+    ports:
+      - 2379:2379
+      - 2380:2380
+    volumes:
+      - "/etcd-data:/etcd-data"
+    tty: true

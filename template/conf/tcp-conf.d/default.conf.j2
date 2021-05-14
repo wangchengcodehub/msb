@@ -1,0 +1,12 @@
+{% for service_obj in service_objs %}
+upstream {{service_obj.service_name}} {
+    server {{service_obj.upstream_host}}:{{service_obj.upstream_port}};
+}
+
+server {
+    listen {{service_obj.listen_port}};
+    proxy_connect_timeout 8s;
+    proxy_timeout 24h;
+    proxy_pass {{service_obj.service_name}};
+}
+{% endfor %}
